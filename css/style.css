@@ -881,9 +881,16 @@ p {
   }
   /* checklist centered on tablet per Figma */
   .hero__checklist { 
-    align-items: center; 
-    text-align: center;
+    align-items: flex-start; 
+    text-align: left;
     margin-inline: auto;
+    width: fit-content;
+  }
+  .hero__check-item {
+    align-items: flex-start;
+  }
+  .check-icon {
+    margin-top: 4px; /* Align icon with multiline text */
   }
   .hero__cta-group { justify-content: center; }
 
@@ -927,20 +934,20 @@ p {
 ============================================================ */
 @media (max-width: 480px) {
   :root {
-    --fs-h1:           38px;
-    --lh-h1:           48px;
-    --fs-h2:           34px;
-    --lh-h2:           48px;
-    --fs-large-title:  22px;
-    --lh-large-title:  32px;
-    --fs-title:        19px;
-    --fs-body:         18px;
-    --lh-body:         32px;
-    --navbar-h:        54px;                      /* Figma mobile: 54px height */
-    --container-pad:   20px;
-    --sp-xl:           40px;
-    --sp-2xl:          56px;
-    --sp-lg:           32px;
+    --fs-h1:           32px;
+    --lh-h1:           42px;
+    --fs-h2:           28px;
+    --lh-h2:           38px;
+    --fs-large-title:  20px;
+    --lh-large-title:  28px;
+    --fs-title:        18px;
+    --fs-body:         15px;
+    --lh-body:         24px;
+    --navbar-h:        60px;
+    --container-pad:   16px;
+    --sp-xl:           32px;
+    --sp-2xl:          48px;
+    --sp-lg:           24px;
   }
 
   /* Navbar — Figma mobile: 375×54px with 16px pad-h, 10px pad-v, 10px gap */
@@ -987,16 +994,26 @@ p {
 
   /* Hero — Figma mobile: 375×2504px total, gap 50px between sections */
   .hero {
-    padding-block: 24px 40px;                    /* Adjust for mobile */
+    padding-block: 24px 32px;                    /* Adjust for mobile */
     min-height: auto;
   }
   .hero__inner {
     min-height: auto;
-    gap: 50px;                                   /* Figma: 50px gap */
+    gap: 32px;                                   /* Figma: 50px gap */
+  }
+  .hero__body {
+    padding-inline: 10px;
+  }
+  .hero__check-item {
+    font-size: 14px;
+  }
+  .check-icon svg {
+    width: 18px;
+    height: 18px;
   }
 
-  .btn     { font-size: 16px; padding: 12px 20px; width: 100%; }
-  .btn--lg { font-size: 16px; padding: 14px 24px; width: 100%; }
+  .btn     { font-size: 15px; padding: 12px 16px; width: 100%; }
+  .btn--lg { font-size: 15px; padding: 14px 16px; width: 100%; }
 
   /* Hero — stacked full-width CTAs (Figma: Get Started + Book A Consultation) */
   .hero__cta-group {
@@ -1017,29 +1034,34 @@ p {
   /* Why section — Figma mobile layout: 375×2504px, 50px gap */
   .why-section {
     min-height: auto;
-    padding-block: 24px 40px;
+    padding-block: 24px 32px;
   }
   .why-section__inner {
-    gap: 50px;                                   /* Figma: 50px gap */
-    padding-inline: 20px;                        /* Mobile safe area */
+    gap: 32px;                                   /* Figma: 50px gap */
+    padding-inline: 16px;                        /* Mobile safe area */
   }
   .why-section__heading { text-align: center; }
-  .why-section__body    { text-align: center; }
+  .why-section__body    { text-align: center; padding-inline: 10px; }
 
   /* Hide decorative elements */
   .why-section__arrows-deco { display: none; }
   .why-section__curl-deco   { display: none; }
 
   /* Feature cards — tighter padding */
+  .features-list { gap: 16px; }
   .feature-card {
     padding: 16px;
-    gap: var(--sp-sm);
+    gap: 12px;
+    align-items: flex-start;
   }
   .feature-card__icon {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
+    margin-top: 0;
   }
-  .feature-card__title { font-size: var(--fs-large-title); }
+  .feature-card__icon svg { width: 20px; height: 20px; }
+  .feature-card__title { font-size: 18px; line-height: 24px; }
+  .feature-card__desc { font-size: 14px; line-height: 22px; }
 
 }
 
@@ -1050,24 +1072,24 @@ p {
   :root {
     --navbar-h:       54px;                       /* Figma mobile: 54px */
     --container-pad:  16px;
-    --sp-xl:          36px;
-    --sp-2xl:         48px;
+    --sp-xl:          32px;
+    --sp-2xl:         40px;
   }
 
   .navbar__inner {
     padding-inline: 16px;                         /* Figma: 16px padding */
-    gap: 10px;
+    gap: 8px;
   }
 
   .hero {
     padding-block: 20px 32px;
   }
-  .hero__inner { gap: 50px; }
+  .hero__inner { gap: 32px; }
 
   .why-section {
     padding-block: 20px 32px;
   }
-  .why-section__inner { gap: 50px; }
+  .why-section__inner { gap: 32px; }
 
   .hero__image-wrap { max-width: 260px; min-height: 260px; }
 
