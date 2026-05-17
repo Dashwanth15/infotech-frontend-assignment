@@ -403,8 +403,7 @@ p {
   .nav-overlay    { display: none !important; }
 }
 
-/* Drawer header */
-/* Drawer header — contains logo (left) and close button (right) */
+/* Drawer header — logo on left, close (×) button on right */
 .mobile-drawer__header {
   display: flex;
   align-items: center;
@@ -495,25 +494,15 @@ p {
 }
 
 /* ============================================================
-   7c. TABLET-SPECIFIC DRAWER (Figma Match)
+   7c. TABLET-SPECIFIC DRAWER (481px – 768px)
+   Figma tablet drawer: 384px wide, 24px/32px padding
 ============================================================ */
 @media (min-width: 481px) and (max-width: 768px) {
-  .mobile-drawer {
-    width: 384px;
-  }
-  .mobile-drawer__header {
-    padding: 24px 32px;
-  }
-  .mobile-drawer__list {
-    padding: 24px 0;
-  }
-  .mobile-drawer__link {
-    padding: 18px 32px;
-  }
-  .mobile-drawer__footer {
-    padding: 24px 32px;
-    margin-top: auto;
-  }
+  .mobile-drawer       { width: 384px; }          /* Figma tablet drawer width */
+  .mobile-drawer__header { padding: 24px 32px; }  /* larger padding than mobile */
+  .mobile-drawer__list   { padding: 24px 0; }
+  .mobile-drawer__link   { padding: 18px 32px; }  /* wider tap area on tablet */
+  .mobile-drawer__footer { padding: 24px 32px; margin-top: auto; }
 }
 
 
@@ -842,34 +831,44 @@ p {
 
 
 /* ============================================================
-   11. BREAKPOINT — 1280px
+   11. BREAKPOINT — 1280px  (large laptop / small desktop)
+   Tighten container padding, compress nav gaps, adjust hero
+   column ratio so image doesn't overflow on smaller desktops.
 ============================================================ */
 @media (max-width: 1280px) {
   :root {
-    --container-pad: clamp(20px, 4vw, 60px);
+    --container-pad: clamp(20px, 4vw, 60px); /* slightly tighter than desktop */
   }
-  .navbar__nav-list { gap: 24px; }
-  .hero__inner { grid-template-columns: 55% 45%; }
-  .hero__badge--rating { right: 0; }
+  .navbar__nav-list { gap: 24px; }              /* reduce from 36px */
+  .hero__inner { grid-template-columns: 55% 45%; } /* more room for text column */
+  .hero__badge--rating { right: 0; }            /* keep badge inside container */
   .hero__badge--trust  { left:  0; }
 }
 
 
 /* ============================================================
    12. BREAKPOINT — 768px (TABLET)
+   Figma tablet frame: W 768 × H 1328, Gap 0, Padding 0
 ============================================================ */
 @media (max-width: 768px) {
+  /* ── Tablet Typography Tokens — Figma Tablet spec ──────────────
+     H1:          54px  Bold       LH 75
+     H2:          46px  Semibold   LH 60
+     Large Title: 24px  Semibold   LH 32
+     Title:       20px  Medium     LH Auto
+     Body:        18px  Regular    LH 32
+  ─────────────────────────────────────────────────────────── */
   :root {
-    --fs-h1:           54px;
-    --lh-h1:           75px;
-    --fs-h2:           46px;
-    --lh-h2:           60px;
-    --fs-large-title:  24px;
-    --lh-large-title:  32px;
-    --fs-title:        20px;
-    --fs-body:         18px;
-    --lh-body:         32px;
-    --navbar-h:        68px;
+    --fs-h1:           54px;  /* Figma Tablet: H1 54px Bold */
+    --lh-h1:           75px;  /* Figma Tablet: LH 75 */
+    --fs-h2:           46px;  /* Figma Tablet: H2 46px Semibold */
+    --lh-h2:           60px;  /* Figma Tablet: LH 60 */
+    --fs-large-title:  24px;  /* Figma Tablet: Large Title 24px Semibold */
+    --lh-large-title:  32px;  /* Figma Tablet: LH 32 */
+    --fs-title:        20px;  /* Figma Tablet: Title 20px Medium */
+    --fs-body:         18px;  /* Figma Tablet: Body Regular 18px */
+    --lh-body:         32px;  /* Figma Tablet: LH 32 */
+    --navbar-h:        68px;  /* tablet navbar height */
     --container-pad:   clamp(16px, 5vw, 40px);
     --sp-xl:           52px;
     --sp-2xl:          72px;
@@ -994,11 +993,11 @@ p {
     --sp-lg:           24px;
   }
 
-  /* Navbar — Figma mobile: 375×54px with 16px pad-h, 10px pad-v, 10px gap */
+  /* Navbar — mobile: height 54px, 16px side padding, 10px element gap */
   .navbar__inner {
-    padding-inline: 16px;                        /* Figma: 16px left/right */
-    gap: 10px;                                   /* Figma: 10px gap */
-    height: 54px;                                /* Figma: 54px navbar height */
+    padding-inline: 16px; /* 16px left/right side padding */
+    gap: 10px;            /* gap between logo, cta, hamburger */
+    height: 54px;         /* Figma Mobile: navbar height 54px */
   }
 
   .navbar__logo-text  { font-size: 17px; }
@@ -1009,9 +1008,9 @@ p {
   }
   .navbar__desktop-cta svg { display: none; }
 
-  /* Mobile Drawer — Figma: 375×717px with optimized spacing */
+  /* Mobile Drawer — full viewport width on small screens */
   .mobile-drawer {
-    width: 100vw;                                /* Full width on mobile */
+    width: 100vw; /* full width: drawer covers entire screen on mobile */
   }
   .mobile-drawer__header {
     padding: 16px 20px;
@@ -1117,45 +1116,39 @@ p {
 
 /* ============================================================
    14. BREAKPOINT — 375px (SMALL MOBILE)
+   Fine-tunes for the smallest phone screens (iPhone SE etc.).
+   Typography inherited from 480px breakpoint — only spacing
+   and layout tweaks are applied here.
 ============================================================ */
 @media (max-width: 375px) {
   :root {
-    --navbar-h:       54px;                       /* Figma mobile: 54px */
-    --container-pad:  16px;
-    --sp-xl:          32px;
-    --sp-2xl:         40px;
+    --navbar-h:       54px;  /* Figma Mobile: 375px frame navbar = 54px */
+    --container-pad:  16px;  /* minimum safe side padding */
+    --sp-xl:          32px;  /* reduced from 52px (tablet) */
+    --sp-2xl:         40px;  /* reduced from 72px (tablet) */
   }
 
   .navbar__inner {
-    padding-inline: 16px;                         /* Figma: 16px padding */
-    gap: 8px;
+    padding-inline: 16px; /* maintain safe 16px side padding */
+    gap: 8px;             /* tighter gap than 480px (10px) for smallest screens */
   }
 
-  .hero {
-    padding-block: 20px 32px;
-  }
-  .hero__inner { gap: 32px; }
+  /* Hero section — reduce padding for tiny screens */
+  .hero        { padding-block: 20px 32px; }
+  .hero__inner { gap: 32px; } /* keep same gap as 480px */
 
-  .why-section {
-    padding-block: 20px 32px;
-  }
+  /* Why section — reduce padding for tiny screens */
+  .why-section        { padding-block: 20px 32px; }
   .why-section__inner { gap: 32px; }
 
+  /* Smaller illustration on 375px — prevents overflow */
   .hero__image-wrap { max-width: 260px; min-height: 260px; }
 
-  .hero__badge {
-    padding: 8px 10px;
-    gap: 6px;
-  }
-  .badge__icon {
-    width: 36px;
-    height: 36px;
-  }
-  .badge__icon svg {
-    width: 22px;
-    height: 22px;
-  }
+  /* Compact badge padding on tiny screens */
+  .hero__badge    { padding: 8px 10px; gap: 6px; }
+  .badge__icon    { width: 36px; height: 36px; }
+  .badge__icon svg { width: 22px; height: 22px; }
 
-  /* Drawer width a bit wider on tiny phones */
+  /* Drawer: slightly narrower than full-width (88vw) — shows page behind */
   .mobile-drawer { width: 88vw; }
 }
