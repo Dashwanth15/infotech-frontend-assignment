@@ -970,16 +970,23 @@ p {
    13. BREAKPOINT — 480px (MOBILE)
 ============================================================ */
 @media (max-width: 480px) {
+  /* ── Mobile Typography Tokens — Figma Mobile spec ──────────────
+     H1:          38px  Bold       LH 48
+     H2:          34px  Semibold   LH 48
+     Large Title: 22px  Semibold   LH 32
+     Title:       19px  Medium     LH Auto
+     Body:        18px  Regular    LH 32
+  ─────────────────────────────────────────────────────────── */
   :root {
-    --fs-h1:           32px;
-    --lh-h1:           42px;
-    --fs-h2:           28px;
-    --lh-h2:           38px;
-    --fs-large-title:  20px;
-    --lh-large-title:  28px;
-    --fs-title:        18px;
-    --fs-body:         15px;
-    --lh-body:         24px;
+    --fs-h1:           38px;  /* Figma Mobile: H1 38px Bold */
+    --lh-h1:           48px;  /* Figma Mobile: LH 48 */
+    --fs-h2:           34px;  /* Figma Mobile: H2 34px Semibold */
+    --lh-h2:           48px;  /* Figma Mobile: LH 48 */
+    --fs-large-title:  22px;  /* Figma Mobile: Large Title 22px Semibold */
+    --lh-large-title:  32px;  /* Figma Mobile: LH 32 */
+    --fs-title:        19px;  /* Figma Mobile: Title 19px Medium */
+    --fs-body:         18px;  /* Figma Mobile: Body Regular 18px */
+    --lh-body:         32px;  /* Figma Mobile: LH 32 */
     --navbar-h:        60px;
     --container-pad:   16px;
     --sp-xl:           32px;
@@ -1036,21 +1043,20 @@ p {
   }
   .hero__inner {
     min-height: auto; /* remove any inherited min-height constraints */
-    gap: 32px;        /* gap between text content and illustration */
+    gap: 32px;        /* internal gap between text content and illustration */
   }
   .hero__body {
     padding-inline: 10px;
   }
-  .hero__check-item {
-    font-size: 14px;
-  }
+  /* check-item inherits --fs-body (18px) — no override needed */
   .check-icon svg {
     width: 18px;
     height: 18px;
   }
 
-  .btn     { font-size: 15px; padding: 12px 16px; width: 100%; }
-  .btn--lg { font-size: 15px; padding: 14px 16px; width: 100%; }
+  /* Buttons use --fs-title (19px) via the token — only override layout */
+  .btn     { padding: 12px 16px; width: 100%; }
+  .btn--lg { padding: 14px 16px; width: 100%; }
 
   /* Hero — stacked full-width CTAs (Figma: Get Started + Book A Consultation) */
   .hero__cta-group {
@@ -1068,10 +1074,15 @@ p {
   .badge__count  { font-size: 18px; }
   .badge__label  { font-size: 11px; }
 
-  /* Why Compliance section — mobile layout (≤480px) */
+  /*
+    Why Compliance section — mobile layout (≤480px)
+    Figma Mobile frame: Gap 50 between Hero section and Why section.
+    margin-top: 50px creates the 50px gap between the two sections.
+  */
   .why-section {
     min-height: auto;     /* let content define height on mobile */
     padding-block: 24px 32px;
+    margin-top: 50px;     /* Figma Mobile: Gap 50 between Hero and Why sections */
   }
   .why-section__inner {
     gap: 32px;        /* vertical gap between left and right stacked columns */
@@ -1097,8 +1108,10 @@ p {
     margin-top: 0;
   }
   .feature-card__icon svg { width: 20px; height: 20px; }
-  .feature-card__title { font-size: 18px; line-height: 24px; }
-  .feature-card__desc { font-size: 14px; line-height: 22px; }
+  /* Feature card title: use --fs-large-title (22px) + --lh-large-title (32px) */
+  .feature-card__title { font-size: var(--fs-large-title); line-height: var(--lh-large-title); }
+  /* Feature card desc: use --fs-body (18px) + --lh-body (32px) */
+  .feature-card__desc  { font-size: var(--fs-body); line-height: var(--lh-body); }
 
 }
 
