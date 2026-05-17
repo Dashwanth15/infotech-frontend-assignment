@@ -120,36 +120,40 @@ button {
 /* ============================================================
    3. TYPOGRAPHY
 ============================================================ */
+/* H1 — Figma Desktop: Roboto 64px Bold, line-height 85px */
 h1 {
   font-family: var(--ff-base);
-  font-size: var(--fs-h1);
-  font-weight: 700;
-  line-height: var(--lh-h1);
+  font-size: var(--fs-h1);        /* 64px */
+  font-weight: 700;               /* Bold */
+  line-height: var(--lh-h1);     /* 85px */
   color: var(--clr-text-dark);
   letter-spacing: -0.01em;
 }
 
+/* H2 — Figma Desktop: Roboto 48px Semibold, line-height 70px */
 h2 {
   font-family: var(--ff-base);
-  font-size: var(--fs-h2);
-  font-weight: 600;
-  line-height: var(--lh-h2);
+  font-size: var(--fs-h2);        /* 48px */
+  font-weight: 600;               /* Semibold */
+  line-height: var(--lh-h2);     /* 70px */
   color: var(--clr-text-dark);
   letter-spacing: -0.01em;
 }
 
+/* H3 / Large Title — Figma Desktop: Roboto 24px Semibold, line-height 32px */
 h3 {
   font-family: var(--ff-base);
-  font-size: var(--fs-large-title);
-  font-weight: 700;
-  line-height: var(--lh-large-title);
+  font-size: var(--fs-large-title); /* 24px */
+  font-weight: 600;                 /* Semibold — Figma: Large Title style */
+  line-height: var(--lh-large-title); /* 32px */
   color: var(--clr-text-dark);
 }
 
+/* Body Regular — Figma Desktop: Roboto 18px Regular, line-height 32px */
 p {
-  font-size: var(--fs-body);
-  font-weight: 400;
-  line-height: var(--lh-body);
+  font-size: var(--fs-body);    /* 18px */
+  font-weight: 400;             /* Regular */
+  line-height: var(--lh-body); /* 32px */
   color: var(--clr-text-body);
 }
 
@@ -190,19 +194,21 @@ p {
 /* ============================================================
    6. BUTTONS
 ============================================================ */
+/* Base button — Figma: Title 20px Medium (font-weight 500) */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   font-family: var(--ff-base);
-  font-size: var(--fs-title);
-  font-weight: 500;
+  font-size: var(--fs-title);  /* 20px — Figma Title size */
+  font-weight: 500;            /* Medium — Figma Title weight */
   line-height: 1;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-sm); /* 8px */
   padding: 12px 24px;
   border: 2px solid transparent;
   cursor: pointer;
+  /* Smooth transitions for hover/focus interactions */
   transition: background 0.2s ease, color 0.2s ease,
               border-color 0.2s ease, transform 0.15s ease,
               box-shadow 0.2s ease;
@@ -292,14 +298,17 @@ p {
   align-items: center;
   gap: 36px;
 }
+/* Nav links — Figma: Title 20px Medium, color #2A2B3A */
 .navbar__nav-link {
-  font-size: var(--fs-title);
-  font-weight: 400;
-  color: var(--clr-text-nav);
+  font-size: var(--fs-title); /* 20px */
+  font-weight: 500;           /* Medium — Figma: Title style */
+  color: var(--clr-text-nav); /* #2A2B3A */
   transition: color 0.2s;
   text-decoration: none;
 }
+/* Hover: turn primary blue */
 .navbar__nav-link:hover  { color: var(--clr-primary); }
+/* Active link: stays primary blue, keeps Medium weight */
 .navbar__nav-link.is-active {
   color: var(--clr-primary);
   font-weight: 500;
@@ -395,13 +404,14 @@ p {
 }
 
 /* Drawer header */
+/* Drawer header — contains logo (left) and close button (right) */
 .mobile-drawer__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;                           /* Figma mobile: tighter padding */
+  padding: 16px 20px; /* Mobile default: 16px top/bottom, 20px left/right */
   border-bottom: 1px solid #F2F3FA;
-  flex-shrink: 0;
+  flex-shrink: 0; /* Prevent header from shrinking when list grows */
 }
 
 .mobile-drawer__logo {
@@ -437,17 +447,18 @@ p {
   width: 100%;
 }
 
+/* Each nav link row inside drawer */
 .mobile-drawer__link {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 14px 20px;                           /* Figma mobile: adjust padding */
+  gap: 16px;          /* space between icon and label */
+  padding: 14px 20px; /* Mobile default: 14px top/bottom, 20px left/right */
   font-size: 18px;
   font-weight: 500;
   color: var(--clr-text-dark);
   text-decoration: none;
   transition: background 0.15s, color 0.15s;
-  width: 100%;
+  width: 100%; /* full-width tap target */
 }
 .mobile-drawer__link:hover {
   background: var(--clr-primary-light);
@@ -468,16 +479,17 @@ p {
   height: 36px;
 }
 
-/* Drawer footer */
+/* Drawer footer — pinned at bottom, holds the CTA button */
 .mobile-drawer__footer {
-  padding: 16px 20px;                           /* Figma mobile: consistent padding */
+  padding: 16px 20px; /* matches header padding for visual symmetry */
   border-top: 1px solid #F2F3FA;
-  flex-shrink: 0;
+  flex-shrink: 0; /* never shrink, always visible at bottom */
 }
 
+/* Full-width CTA inside the mobile drawer */
 .mobile-drawer__cta {
   width: 100%;
-  border-radius: var(--radius-md);              /* Figma: slightly smaller radius */
+  border-radius: var(--radius-md); /* 14px — matches card radius for consistency */
   font-size: 16px;
   padding: 14px 20px;
 }
@@ -508,19 +520,35 @@ p {
 /* ============================================================
    8. HERO SECTION
 ============================================================ */
+/*
+  Figma spec — Hero Section1:
+    Width:   1440px
+    Height:  829px (Hug — sized by content)
+    Padding: 0  (no outer padding on the frame)
+    Gap:     0
+  The section uses min-height to guarantee the 829px,
+  and flex+align-items:center to vertically center the grid.
+*/
 .hero {
-  background: var(--clr-hero-bg);
-  padding-block: 72px 96px;   /* top 72px, bottom 96px — matches Figma ~829px total */
+  background: var(--clr-hero-bg); /* #ECEEF8 — light lavender-grey */
+  min-height: 829px;  /* Figma: Hero Section1 H 829px */
+  padding-block: 0;   /* Figma: Hero Section1 Padding = 0 */
   overflow: hidden;
+  display: flex;          /* flex wrapper so align-items works */
+  align-items: center;    /* vertically center the inner grid within 829px */
 }
 
+/*
+  Two-column grid:
+    Left  (content) ≈ 49% — Figma: 606px of 1240px container
+    Right (visual)  ≈ 51% — Figma: 634px of 1240px container
+*/
 .hero__inner {
   display: grid;
-  grid-template-columns: 49fr 51fr;  /* Figma: content 606/1240 ≈ 49% */
+  grid-template-columns: 49fr 51fr;
   align-items: center;
-  gap: clamp(32px, 4vw, 56px);
+  gap: clamp(32px, 4vw, 56px); /* fluid gap: 32px → 56px as viewport grows */
   width: 100%;
-  min-height: 661px;   /* Figma: 829px total - 72px top - 96px bottom = 661px */
 }
 
 /* ── Left Content ── */
@@ -587,10 +615,11 @@ p {
 
 
 
+/* Image wrapper — constrains banner image width within the right column */
 .hero__image-wrap {
   position: relative;
   width: 100%;
-  max-width: 560px;     /* slightly wider to fill right column */
+  max-width: 560px; /* fills most of the right column without overflow */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -799,7 +828,7 @@ p {
 
 .feature-card__title {
   font-size: var(--fs-large-title);
-  font-weight: 700;
+  font-weight: 600;   /* Figma: Large Title = Semibold */
   line-height: var(--lh-large-title);
   color: var(--clr-text-dark);
 }
@@ -858,16 +887,24 @@ p {
   }
   .navbar__desktop-cta svg { width: 14px; height: 14px; }
 
-  /* Hero — single column, reset desktop min-height */
+  /*
+    Hero — tablet single column layout
+    Figma tablet spec: 768×1328px total
+    padding-block: 0 on the section frame itself (same as desktop);
+    top/bottom breathing room is added via padding-top / padding-bottom.
+  */
   .hero {
-    padding-block: var(--sp-xl) var(--sp-lg);   /* 52px + 40px = 92px */
-    min-height: 1328px;                          /* Figma tablet: 768×1328px */
+    min-height: 1328px;        /* Figma tablet: 768×1328px */
+    padding-block: 0;          /* Figma: section frame Padding = 0 */
+    align-items: flex-start;   /* stack content from top, not center */
+    padding-top: var(--sp-xl); /* 52px — breathing room at top */
+    padding-bottom: var(--sp-lg); /* 40px — breathing room at bottom */
   }
+  /* Single column — image moves below content on tablet */
   .hero__inner {
     grid-template-columns: 1fr;
-    min-height: 1236px;                          /* 1328px - 92px padding = 1236px */
     text-align: center;
-    gap: var(--sp-lg);
+    gap: var(--sp-lg); /* 40px gap between content and image */
   }
   .hero__content {
     align-items: center;
@@ -992,14 +1029,14 @@ p {
     border-radius: var(--radius-md);
   }
 
-  /* Hero — Figma mobile: 375×2504px total, gap 50px between sections */
+  /* Hero — mobile layout (≤480px) */
   .hero {
-    padding-block: 24px 32px;                    /* Adjust for mobile */
-    min-height: auto;
+    padding-block: 24px 32px; /* compact top/bottom spacing on small screens */
+    min-height: auto;         /* let content define height, no fixed min */
   }
   .hero__inner {
-    min-height: auto;
-    gap: 32px;                                   /* Figma: 50px gap */
+    min-height: auto; /* remove any inherited min-height constraints */
+    gap: 32px;        /* gap between text content and illustration */
   }
   .hero__body {
     padding-inline: 10px;
@@ -1031,14 +1068,14 @@ p {
   .badge__count  { font-size: 18px; }
   .badge__label  { font-size: 11px; }
 
-  /* Why section — Figma mobile layout: 375×2504px, 50px gap */
+  /* Why Compliance section — mobile layout (≤480px) */
   .why-section {
-    min-height: auto;
+    min-height: auto;     /* let content define height on mobile */
     padding-block: 24px 32px;
   }
   .why-section__inner {
-    gap: 32px;                                   /* Figma: 50px gap */
-    padding-inline: 16px;                        /* Mobile safe area */
+    gap: 32px;        /* vertical gap between left and right stacked columns */
+    padding-inline: 16px; /* safe area padding — matches container-pad on mobile */
   }
   .why-section__heading { text-align: center; }
   .why-section__body    { text-align: center; padding-inline: 10px; }
